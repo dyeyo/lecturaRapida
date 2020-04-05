@@ -9,8 +9,8 @@ class Questions extends Model
 {
     protected $guarded=[];
 
-    public function reading()
+    public function preguntasAsociadas()
     {
-        return $this->hasMany(Reading::class);
+        return $this->hasMany(QuestionsTest::class, 'questions_id');
     }
 }

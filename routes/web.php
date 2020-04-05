@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('preguntas','QuestionsController@index')->name('questions');
+Route::get('preguntas-opciones','QuestionsController@preguntas');
+Route::get('{id}/preguntas-opciones-espesifica','QuestionsController@preguntasEspesifica');
 Route::post('preguntas/crear','QuestionsController@store')->name('questions_create');
 
 Route::get('lectura','ReadingsController@index')->name('readings');
@@ -30,4 +32,5 @@ Route::get('pruebajovenes','TestController@testyoungs')->name('testyoungs');
 Route::get('pruebaadultos','TestController@testadults')->name('testadults');
 Route::get('prueba/{id}','TestController@getTest')->name('gettest');
 Route::post('testsave','TestController@store')->name('testsave');
+Route::post('{id_pregunta}/guardar-opcion', 'QuestionsController@guardarOpcionDePregunta');
 

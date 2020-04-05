@@ -9,11 +9,21 @@ use Illuminate\Http\Request;
 class QuestionsController extends Controller
 {
     
-    public function index()
+    public function index(Questions $questions)
     {
-        $questions=Questions::all();
-        return view('questions.index',compact('questions'));
+        return view('questions.index');
     }
+     public function preguntas(Questions $questions)
+    {
+        $questions = $questions->with('preguntasAsociadas')->get();
+        return $questions;
+    }
+     public function preguntasEspesifica(Questions $questions, $id)
+    {
+        $questions = $questions->where('id', $id)->with('preguntasAsociadas')->first();
+        return $questions;
+    }
+
 
     public function store(Request $request)
     {
@@ -21,20 +31,19 @@ class QuestionsController extends Controller
         $head_questions->title_question=$request->title_question;
         $head_questions->save();
 
-        $body_questions=new QuestionsTest();
-        $body_questions->option_one=$request->option_one;
-        $body_questions->option_two=$request->option_two;
-        $body_questions->option_three=$request->option_three;
-        $body_questions->option_four=$request->option_four;
-        $body_questions->questions_id=$head_questions->id;
-        $body_questions->save();
+        $questions = Questions::all();
 
-        return redirect()->route('questions');
+        return  view('questions.index',compact('questions'));
     }
 
-    public function show($id)
+    public function guardarOpcionDePregunta(Request $request, $id_pregunta)
     {
-        //
+        $opcion =  new QuestionsTest();
+        $opcion->option = $request->opcion_pregunta;
+        $opcion->questions_id = $id_pregunta;
+        $opcion->save(); 
+
+        return $opcion;
     }
 
     public function edit($id)

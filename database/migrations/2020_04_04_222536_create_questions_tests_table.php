@@ -15,12 +15,7 @@ class CreateQuestionsTestsTable extends Migration
     {
         Schema::create('questions_tests', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-            $table->string('option_one',100);
-            $table->string('option_two',100);
-            $table->string('option_three',100);
-            $table->string('option_four',100);
-
+            $table->string('option',100);
             $table->bigInteger('questions_id')->unsigned();
             $table->foreign('questions_id')->references('id')->on('questions');
             
