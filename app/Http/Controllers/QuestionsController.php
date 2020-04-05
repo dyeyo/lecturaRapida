@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Questions;
-use App\QuestionsTest;
+use App\Opciones;
 use Illuminate\Http\Request;
 
 class QuestionsController extends Controller
@@ -15,12 +15,12 @@ class QuestionsController extends Controller
     }
      public function preguntas(Questions $questions)
     {
-        $questions = $questions->with('preguntasAsociadas')->get();
+        $questions = $questions->with('opcionesAsociadas')->get();
         return $questions;
     }
      public function preguntasEspesifica(Questions $questions, $id)
     {
-        $questions = $questions->where('id', $id)->with('preguntasAsociadas')->first();
+        $questions = $questions->where('id', $id)->with('opcionesAsociadas')->first();
         return $questions;
     }
 
@@ -38,9 +38,9 @@ class QuestionsController extends Controller
 
     public function guardarOpcionDePregunta(Request $request, $id_pregunta)
     {
-        $opcion =  new QuestionsTest();
+        $opcion =  new Opciones();
         $opcion->option = $request->opcion_pregunta;
-        $opcion->questions_id = $id_pregunta;
+        $opcion->id_question = $id_pregunta;
         $opcion->save(); 
 
         return $opcion;

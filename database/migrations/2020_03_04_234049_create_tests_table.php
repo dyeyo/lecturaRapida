@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReadingsTable extends Migration
+class CreateTestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,12 @@ class CreateReadingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('readings', function (Blueprint $table) {
+        Schema::create('tests', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-            $table->string('title',50);
-            $table->longText('reading',800);
-            $table->string('time');
-            $table->string('range_age');
-
-            $table->bigInteger('test_id')->unsigned();
-            $table->foreign('test_id')->references('id')->on('questions');
-
-
+            $table->longText('title');
+            $table->longText('lectura_completa');
+            $table->bigInteger('tiempo_lectura');
+            $table->bigInteger('rango');
             $table->timestamps();
         });
     }
@@ -36,6 +30,6 @@ class CreateReadingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('readings');
+        Schema::dropIfExists('tests');
     }
 }

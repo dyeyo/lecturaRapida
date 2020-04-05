@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class QuestionsTest extends Model
+class Opciones extends Model
 {
-    protected $guarded=[];
+    protected $guarded = [];
 }

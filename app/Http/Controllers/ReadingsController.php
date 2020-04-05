@@ -10,14 +10,17 @@ class ReadingsController extends Controller
 {
     public function index()
     {
+      
+        return view('readings.index');
+    }
+
+    public function preguntas(){
         $readings=Reading::all();
         $questions=Questions::select('id','title_question')->get();
-        return view('readings.index',compact('readings','questions'));
     }
 
     public function store(Request $request)
     {
-        //dd($request->all());
         Reading::create($request->all());
         return redirect()->route('readings');
     }

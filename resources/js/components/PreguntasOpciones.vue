@@ -42,7 +42,7 @@
                     </div>
                     <div class="modal-body">
                         <p>Opciones</p>
-                        <ul class="list-group" v-for="opciones in data_opcion.preguntas_asociadas">
+                        <ul class="list-group" v-for="opciones in data_opcion.opciones_asociadas">
                             <li class="list-group-item">{{opciones.option}}</li>
                         </ul>
                         <div class="form-group">

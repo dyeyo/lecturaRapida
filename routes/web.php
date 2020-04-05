@@ -23,7 +23,7 @@ Route::post('preguntas/crear','QuestionsController@store')->name('questions_crea
 Route::get('lectura','ReadingsController@index')->name('readings');
 Route::post('lectura/crear','ReadingsController@store')->name('readings_create');
 
-Route::get('pruebaninos','TestController@testboys')->name('testboys');
+Route::get('pruebaninos/{id}','TestController@testboys');
 //Route::get('prueba/{title}','TestController@gettest')->name('gettest');
 
 Route::get('pruebajovenes','TestController@testyoungs')->name('testyoungs');
@@ -31,6 +31,12 @@ Route::get('pruebajovenes','TestController@testyoungs')->name('testyoungs');
 
 Route::get('pruebaadultos','TestController@testadults')->name('testadults');
 Route::get('prueba/{id}','TestController@getTest')->name('gettest');
-Route::post('testsave','TestController@store')->name('testsave');
+Route::post('test-save','TestController@store')->name('testsave');
 Route::post('{id_pregunta}/guardar-opcion', 'QuestionsController@guardarOpcionDePregunta');
+
+
+Route::post('guardar-test','TestController@guardarTest');
+Route::get('mostrar-test', 'TestController@mostrarTest');
+Route::get('obtener-test-espesifico/{id}', 'TestController@obtenerTestEspesifica');
+
 
