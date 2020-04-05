@@ -74,7 +74,7 @@
             <label for="test_id">Seleccione la Prueba acorde para la lectura</label>
             <div class="form-group">
               @foreach($questions as $item)
-                <input type="checkbox" style="font-size: 3px;" class="form-control" value="{{$item->id}}" name="test_id[]" id="test_id">
+                <input type="checkbox" style="font-size: 3px;" class="form-control" value="{{$item->id}}" name="test_id" id="test_id">
                 <label for="test_id">{{$item->title_question}}</label>
               @endforeach
             </div>

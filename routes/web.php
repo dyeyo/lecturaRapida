@@ -29,4 +29,5 @@ Route::get('pruebajovenes','TestController@testyoungs')->name('testyoungs');
 
 Route::get('pruebaadultos','TestController@testadults')->name('testadults');
 Route::get('prueba/{id}','TestController@getTest')->name('gettest');
+Route::post('testsave','TestController@store')->name('testsave');
 
