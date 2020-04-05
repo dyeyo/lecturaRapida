@@ -51,13 +51,11 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {	
-            let timesseg= $('#seg').val()*1000    
-            $("#btn-comenzar").on("click", function(){
-                setTimeout(timeLimit, timesseg);
-              });
+            let timesseg= $('#seg').val()*1000  
             $("#btn-comenzar").click(function() {
                 $('#test').show()
                 $('#btn-comenzar').css('display','none')
+                setTimeout(timeLimit, timesseg);
             });
             $("#btn-finalizar").click(function() {
                 $('#test').css('display','none')
@@ -67,6 +65,7 @@
             function timeLimit(){
                 $('#test').css('display','none')  
                 alert('Se termino el Tiempo')
+                $('#questions').show()
             }
                 
             
