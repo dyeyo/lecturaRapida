@@ -23,7 +23,7 @@ class TestController extends Controller
                     'questions_tests.option_three','questions_tests.option_four','questions.id','questions.title_question')
                     ->get();
                     //dd($questions);
-        return view('tests.tests_global',compact('test','questions'));
+        return view('tests.boys.index',compact('test','questions'));
     }
     public function testyoungs()
     {
@@ -41,6 +41,19 @@ class TestController extends Controller
 
     public function getTest($id)
     {   
+        $test=Reading::find($id);
+        //dd($test);
+
+        $questions =DB::table('questions_tests')
+                    ->join('questions', 'questions_tests.questions_id', '=', 'questions.id')
+                    ->select('questions_tests.option_one','questions_tests.option_two',
+                    'questions_tests.option_three','questions_tests.option_four','questions.id','questions.title_question')
+                    ->where('questions.id',$id)
+                    ->get();
+                    //dd($questions);
+        return view('tests.tests_global',compact('test','questions'));
+        //dd($questions);
+
     }
 
     public function store(Request $request)
