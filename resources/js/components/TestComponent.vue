@@ -9,7 +9,6 @@
                             <div class="card-body">
                                 <h5 class="card-title">Prueba para niños de 8 a 15 años</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-                                <a class="btn btn-primary" @click="irRuta(test.id)" >Mirar Prueba</a>
                             </div>
                         </div>
                     </div>
@@ -40,6 +39,11 @@
 </template>
 <script>
 export default {
+    props:{
+        route: {
+                 type: String, required: true 
+            }
+    },
     data() {
         return {
             data_test: [],
@@ -57,7 +61,7 @@ export default {
             } catch (e) {
                 console.log(e);
             }
-        },
+        }
     }
 }
 

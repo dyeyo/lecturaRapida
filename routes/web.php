@@ -1,5 +1,5 @@
 <?php
-
+use App\Tests;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (Tests $test) {
+       $testR = $test->with('preguntasAsociadas','preguntasAsociadas.opcionesAsociadas')->get();
+    return view('welcome', compact('testR'));
 });
 
 Route::get('preguntas','QuestionsController@index')->name('questions');
@@ -23,7 +24,7 @@ Route::post('preguntas/crear','QuestionsController@store')->name('questions_crea
 Route::get('lectura','ReadingsController@index')->name('readings');
 Route::post('lectura/crear','ReadingsController@store')->name('readings_create');
 
-Route::get('pruebaninos/{id}','TestController@testboys');
+Route::get('pruebaninos/{id}','TestController@testboys')->name('asdd');
 //Route::get('prueba/{title}','TestController@gettest')->name('gettest');
 
 Route::get('pruebajovenes','TestController@testyoungs')->name('testyoungs');
@@ -37,7 +38,7 @@ Route::post('{id_pregunta}/guardar-opcion', 'QuestionsController@guardarOpcionDe
 
 Route::post('guardar-test','TestController@guardarTest');
 Route::get('mostrar-test', 'TestController@mostrarTest');
-Route::get('obtener-test-espesifico/{id}', 'TestController@obtenerTestEspesifica');
+Route::get('obtener-test-espesifico/{id}', 'TestController@obtenerTestEspesifica')->name('asd');
 
 
 

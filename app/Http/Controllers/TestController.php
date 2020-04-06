@@ -6,7 +6,6 @@ use App\Questions;
 use App\QuestionsTest;
 use App\Reading;
 use App\Tests;
-use App\Pregunta_test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,13 +17,9 @@ class TestController extends Controller
     
     public function testboys($id)
     {
-        $id_test = $id;
-        return view('tests.boys.index', compact('id_test'));
-    }
-    public function obtenerTestEspesifica($id)
-    {
-        $t = Tests::where('id', $id)->with('preguntasAsociadas', 'preguntasAsociadas.opcionesAsociadas')->first();
-        return $t;
+         $test = Tests::where('id', $id)->with('preguntasAsociadas', 'preguntasAsociadas.opcionesAsociadas')->first();
+        
+        return view('tests.boys.index', compact('test'));
     }
     // public function testyoungs()
     // {
