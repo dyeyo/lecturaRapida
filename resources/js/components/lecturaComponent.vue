@@ -20,13 +20,13 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label for="titulo_completo">Titulo Completo</label>
-                                                <input type="text" class="form-control" v-model="model.titulo" >
+                                                <input type="text" class="form-control" v-model="model.title" >
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label for="titulo_completo">Lectura Completa</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="model.lectura" ></textarea>
+                                                <label for="lectura_completa">Lectura Completa</label>
+                                                <textarea class="form-control" id="lectura_completa" rows="3" v-model="model.lectura" ></textarea>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
@@ -61,7 +61,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary" @click.prevent="crearLectura" >Crear</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" @click.prevent="crearLectura" >Crear</button>
                             </div>
                         </div>
                     </div>
@@ -72,29 +72,17 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Titulo de la lectura</th>
+                            <th scope="col">Tiempo Limite</th>
+                            <th scope="col">Rango Edad</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
+                        <tr v-for="(item, index) in readings" :key="index">
+                            <th scope="row">{{index+1}}</th>
+                            <td>{{item.title}}</td>
+                            <td>{{item.tiempo_lectura}}seg</td>
+                            <td>{{item.rango == '1' ? 'Niños' : item.rango == '2' ? 'Jovenes' : 'Adulto'}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -106,10 +94,11 @@
 export default {
     data() {
         return {
+            readings: [],
             preguntas_data: [],
             total_de_preguntas: [],
             model: {
-                titulo: '', 
+                title: '', 
                 lectura: '', 
                 tiempo: '', 
                 rango: '',
@@ -117,10 +106,24 @@ export default {
             }
         }
     },
+    created(){
+        this.getLectura();
+    },
     mounted() {
         this.getPreguntas();
     },
     methods: {
+        async getLectura(){
+            const URL = `get_readings`
+            try {
+                let { data } = await axios(URL)
+                console.log(data);
+                
+                this.readings = data
+            } catch (e) {
+                console.log(e);
+            }
+        },
         async getPreguntas() {
             const URL = `preguntas-opciones`
             try {
@@ -137,6 +140,8 @@ export default {
             const URL = 'guardar-test'
             try {
                 let {data} = await axios.post(URL, this.model)
+                console.log(data);
+                this.readings.push(data)
             } catch(e) {
                 console.log(e);
             } 

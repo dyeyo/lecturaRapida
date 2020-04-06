@@ -45,7 +45,7 @@ class TestController extends Controller
 
     public function store(Request $request)
     {
-
+        dd($request->all());
         // $result=new Results();
         // $result->question = $request->question;
         // $result->id_user = Auth::id();
@@ -58,7 +58,7 @@ class TestController extends Controller
     {
         try {
             return DB::transaction(function() use ($request, $test){
-                    $test->title = $request->titulo;
+                    $test->title = $request->title;
                     $test->lectura_completa = $request->lectura;
                     $test->tiempo_lectura = $request->tiempo;
                     $test->rango = $request->rango;

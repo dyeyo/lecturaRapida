@@ -22,6 +22,7 @@ Route::get('{id}/preguntas-opciones-espesifica','QuestionsController@preguntasEs
 Route::post('preguntas/crear','QuestionsController@store')->name('questions_create');
 
 Route::get('lectura','ReadingsController@index')->name('readings');
+Route::get('get_readings','ReadingsController@getExamenes')->name('get_readings');
 Route::post('lectura/crear','ReadingsController@store')->name('readings_create');
 
 Route::get('pruebaninos/{id}','TestController@testboys')->name('asdd');

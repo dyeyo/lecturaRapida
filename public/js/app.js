@@ -2487,25 +2487,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      readings: [],
       preguntas_data: [],
       total_de_preguntas: [],
       model: {
-        titulo: '',
+        title: '',
         lectura: '',
         tiempo: '',
         rango: '',
@@ -2513,11 +2502,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
+  created: function created() {
+    this.getLectura();
+  },
   mounted: function mounted() {
     this.getPreguntas();
   },
   methods: {
-    getPreguntas: function getPreguntas() {
+    getLectura: function getLectura() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -2527,7 +2519,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                URL = "preguntas-opciones";
+                URL = "get_readings";
                 _context.prev = 1;
                 _context.next = 4;
                 return axios(URL);
@@ -2535,58 +2527,98 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 4:
                 _yield$axios = _context.sent;
                 data = _yield$axios.data;
-                _this.preguntas_data = data;
-                _context.next = 12;
+                console.log(data);
+                _this.readings = data;
+                _context.next = 13;
                 break;
 
-              case 9:
-                _context.prev = 9;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](1);
                 console.log(_context.t0);
 
-              case 12:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[1, 9]]);
+        }, _callee, null, [[1, 10]]);
+      }))();
+    },
+    getPreguntas: function getPreguntas() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var URL, _yield$axios2, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                URL = "preguntas-opciones";
+                _context2.prev = 1;
+                _context2.next = 4;
+                return axios(URL);
+
+              case 4:
+                _yield$axios2 = _context2.sent;
+                data = _yield$axios2.data;
+                _this2.preguntas_data = data;
+                _context2.next = 12;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](1);
+                console.log(_context2.t0);
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[1, 9]]);
       }))();
     },
     AgregarPreguntasAformulario: function AgregarPreguntasAformulario(item) {
       this.model.preguntas.push(item);
     },
     crearLectura: function crearLectura() {
-      var _this2 = this;
+      var _this3 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
         var URL, _yield$axios$post, data;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
                 URL = 'guardar-test';
-                _context2.prev = 1;
-                _context2.next = 4;
-                return axios.post(URL, _this2.model);
+                _context3.prev = 1;
+                _context3.next = 4;
+                return axios.post(URL, _this3.model);
 
               case 4:
-                _yield$axios$post = _context2.sent;
+                _yield$axios$post = _context3.sent;
                 data = _yield$axios$post.data;
-                _context2.next = 11;
+                console.log(data);
+
+                _this3.readings.push(data);
+
+                _context3.next = 13;
                 break;
 
-              case 8:
-                _context2.prev = 8;
-                _context2.t0 = _context2["catch"](1);
-                console.log(_context2.t0);
+              case 10:
+                _context3.prev = 10;
+                _context3.t0 = _context3["catch"](1);
+                console.log(_context3.t0);
 
-              case 11:
+              case 13:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, null, [[1, 8]]);
+        }, _callee3, null, [[1, 10]]);
       }))();
     }
   }
@@ -39187,13 +39219,13 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.model.titulo,
-                                    expression: "model.titulo"
+                                    value: _vm.model.title,
+                                    expression: "model.title"
                                   }
                                 ],
                                 staticClass: "form-control",
                                 attrs: { type: "text" },
-                                domProps: { value: _vm.model.titulo },
+                                domProps: { value: _vm.model.title },
                                 on: {
                                   input: function($event) {
                                     if ($event.target.composing) {
@@ -39201,7 +39233,7 @@ var render = function() {
                                     }
                                     _vm.$set(
                                       _vm.model,
-                                      "titulo",
+                                      "title",
                                       $event.target.value
                                     )
                                   }
@@ -39214,7 +39246,7 @@ var render = function() {
                             _c("div", { staticClass: "form-group" }, [
                               _c(
                                 "label",
-                                { attrs: { for: "titulo_completo" } },
+                                { attrs: { for: "lectura_completa" } },
                                 [_vm._v("Lectura Completa")]
                               ),
                               _vm._v(" "),
@@ -39228,10 +39260,7 @@ var render = function() {
                                   }
                                 ],
                                 staticClass: "form-control",
-                                attrs: {
-                                  id: "exampleFormControlTextarea1",
-                                  rows: "3"
-                                },
+                                attrs: { id: "lectura_completa", rows: "3" },
                                 domProps: { value: _vm.model.lectura },
                                 on: {
                                   input: function($event) {
@@ -39405,7 +39434,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-primary",
-                        attrs: { type: "button" },
+                        attrs: { type: "button", "data-dismiss": "modal" },
                         on: {
                           click: function($event) {
                             $event.preventDefault()
@@ -39423,7 +39452,39 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "row m-1" }, [
+        _c("table", { staticClass: "table" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.readings, function(item, index) {
+              return _c("tr", { key: index }, [
+                _c("th", { attrs: { scope: "row" } }, [
+                  _vm._v(_vm._s(index + 1))
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.title))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.tiempo_lectura) + "seg")]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(
+                      item.rango == "1"
+                        ? "Niños"
+                        : item.rango == "2"
+                        ? "Jovenes"
+                        : "Adulto"
+                    )
+                  )
+                ])
+              ])
+            }),
+            0
+          )
+        ])
+      ])
     ])
   ])
 }
@@ -39457,51 +39518,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row m-1" }, [
-      _c("table", { staticClass: "table" }, [
-        _c("thead", [
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("First")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Last")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Handle")])
-          ])
-        ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Mark")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Otto")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("@mdo")])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Jacob")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Thornton")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("@fat")])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "row" } }, [_vm._v("3")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Larry")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("the Bird")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("@twitter")])
-          ])
-        ])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Titulo de la lectura")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tiempo Limite")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Rango Edad")])
       ])
     ])
   }
@@ -52036,14 +52061,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************!*\
   !*** ./resources/js/components/lecturaComponent.vue ***!
   \******************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lecturaComponent_vue_vue_type_template_id_2e1fe524___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lecturaComponent.vue?vue&type=template&id=2e1fe524& */ "./resources/js/components/lecturaComponent.vue?vue&type=template&id=2e1fe524&");
 /* harmony import */ var _lecturaComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lecturaComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/lecturaComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _lecturaComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _lecturaComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -52073,7 +52099,7 @@ component.options.__file = "resources/js/components/lecturaComponent.vue"
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/lecturaComponent.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52119,8 +52145,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\FAMILIA\Desktop\lecturaRapida\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\FAMILIA\Desktop\lecturaRapida\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\pruebalectura\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\pruebalectura\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

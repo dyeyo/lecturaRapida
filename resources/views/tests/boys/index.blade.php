@@ -12,7 +12,7 @@
                 </div>
             </div>
         </div>
-        <div class="row m-5" id="test" >
+        <div class="row m-5" id="test"  style="display: none" >
             <div class="col-sm-12">
                 <div class="card" >
                   <div class="card-body">
@@ -34,7 +34,7 @@
                                 @foreach ($value->opcionesAsociadas as $value2)
                                 <div class="custom-control custom-radio mb-2">
                                     <input type="radio" id="question-{{$value2->id}}-{{$value->id}}" name="question-{{$value2->id}}-{{$value->id}}" 
-                                    class="custom-control-input" value="['p' => {{$value->id}}, 'r' => {{$value2->id}}]" >
+                                    class="custom-control-input" value="{{$value->id}}, {{$value2->id}}" >
                                     <label class="custom-control-label" for="question-{{$value2->id}}-{{$value->id}}"> {{$value2->option}}</label>
                                 </div>
                                 @endforeach
