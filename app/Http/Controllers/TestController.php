@@ -19,6 +19,14 @@ class TestController extends Controller
     public function testboys($id)
     {
          $test = Tests::where('id', $id)->with('preguntasAsociadas', 'preguntasAsociadas.opcionesAsociadas')->first();
+
+            foreach ($test->preguntasAsociadas as $key => $value) {
+                foreach ($value->opcionesAsociadas as $key => $value2) {
+                    $value2->marcada = false;
+                }
+                
+            }
+
         
         return view('tests.boys.index', compact('test'));
     }
@@ -37,12 +45,13 @@ class TestController extends Controller
 
     public function store(Request $request)
     {
-        $result=new Results();
-        $result->question = $request->question;
-        $result->id_user = Auth::id();
-        $result->save();
 
-        return redirect()->route('getTest');
+        // $result=new Results();
+        // $result->question = $request->question;
+        // $result->id_user = Auth::id();
+        // $result->save();
+
+        // return redirect()->route('getTest');
     }
 
     public function guardarTest(Request $request,Tests $test)
