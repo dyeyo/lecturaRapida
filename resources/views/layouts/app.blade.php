@@ -33,7 +33,6 @@
                 <div class="collapse navbar-collapse " id="navbarSupportedContent" >
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto dropdown">
-                        @if( auth()->user())
                         <li>
                             <div class="dropdown mr-1 small ">
                                   <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,15 +52,25 @@
                             </div>
                             
                         </li>
-                       
-                            <li class="mt-2">
-                                <p>{{ auth()->user()->name }}</p>   
-                            </li>
-                        @else
-                            <li class="mt-2">
-                                <a href="{{ route('login') }}">Entrar</a>  
-                            </li>
-                        @endif
+                        <li>
+                            <div class="dropdown mr-1 small ">
+                                  <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    INICIO 
+                                  </button>
+                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a href="/" class="dropdown-item">
+                                                INICIO 
+                                            <a>
+                                            <a  href="{{ route('questions')}}"  class="dropdown-item">
+                                                Crear Test
+                                            </a>
+                                            <a href="{{ route('readings')}}" class="dropdown-item">
+                                                Crear Lecturas
+                                            </a>
+                                      </div>
+                            </div>
+                            
+                        </li>
                     </ul>
                 </div>
             </div>

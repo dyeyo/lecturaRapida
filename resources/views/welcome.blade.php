@@ -1,7 +1,7 @@
-@extends('layouts.nav')
+@extends('layouts.app')
 
 @section('content')
-<test/>
+    <test/>
 @endsection
 
         

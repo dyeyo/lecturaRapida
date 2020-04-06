@@ -134,7 +134,7 @@ export default {
             this.model.preguntas.push(item)
         },
         async crearLectura(){
-            const URL = `guardar-test`
+            const URL = 'guardar-test'
             try {
                 let {data} = await axios.post(URL, this.model)
             } catch(e) {

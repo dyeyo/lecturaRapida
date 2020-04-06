@@ -10,8 +10,13 @@ class ReadingsController extends Controller
 {
     public function index()
     {
-      
         return view('readings.index');
+    }
+
+    public function getTest()
+    {
+        $readings=Reading::all();
+        return response()->json($readings);
     }
 
     public function preguntas(){

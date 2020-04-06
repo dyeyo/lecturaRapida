@@ -8,6 +8,7 @@ use App\Reading;
 use App\Tests;
 use App\Pregunta_test;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use function Ramsey\Uuid\v1;
@@ -68,7 +69,7 @@ class TestController extends Controller
                     $test->lectura_completa = $request->lectura;
                     $test->tiempo_lectura = $request->tiempo;
                     $test->rango = $request->rango;
-                    $test->rango = $request->rango;
+                    $test->id_user = Auth::id();
                     $test->save();
 
                 foreach ($request->preguntas as $key => $value) {

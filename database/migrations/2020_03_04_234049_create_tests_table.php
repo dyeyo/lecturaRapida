@@ -19,6 +19,10 @@ class CreateTestsTable extends Migration
             $table->longText('lectura_completa');
             $table->bigInteger('tiempo_lectura');
             $table->bigInteger('rango');
+
+            $table->bigInteger('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users');
+            
             $table->timestamps();
         });
     }

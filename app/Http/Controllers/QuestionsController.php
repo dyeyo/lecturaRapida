@@ -41,6 +41,7 @@ class QuestionsController extends Controller
         $opcion =  new Opciones();
         $opcion->option = $request->opcion_pregunta;
         $opcion->id_question = $id_pregunta;
+
         $opcion->save(); 
 
         return $opcion;

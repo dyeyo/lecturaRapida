@@ -33,10 +33,14 @@ Route::get('pruebaadultos','TestController@testadults')->name('testadults');
 Route::get('prueba/{id}','TestController@getTest')->name('gettest');
 Route::post('test-save','TestController@store')->name('testsave');
 Route::post('{id_pregunta}/guardar-opcion', 'QuestionsController@guardarOpcionDePregunta');
-
+ 
 
 Route::post('guardar-test','TestController@guardarTest');
 Route::get('mostrar-test', 'TestController@mostrarTest');
 Route::get('obtener-test-espesifico/{id}', 'TestController@obtenerTestEspesifica');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

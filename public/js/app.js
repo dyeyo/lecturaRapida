@@ -2560,7 +2560,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                URL = "guardar-test";
+                URL = 'guardar-test';
                 _context2.prev = 1;
                 _context2.next = 4;
                 return axios.post(URL, _this2.model);
@@ -52127,8 +52127,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\FAMILIA\Desktop\lecturaRapida\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\FAMILIA\Desktop\lecturaRapida\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\pruebalectura\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\pruebalectura\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
