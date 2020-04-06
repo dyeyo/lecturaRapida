@@ -30,18 +30,6 @@ class TestController extends Controller
         
         return view('tests.boys.index', compact('test'));
     }
-    // public function testyoungs()
-    // {
-    //     $test=Reading::select('id','title','reading','time','test_id')->where('range_age','jovenes')->get();
-    //     return view('tests.young.index',compact('test'));
-    // }
-
-    // public function testadults()
-    // {
-    //     $test=Reading::select('id','title','reading','time','test_id')->where('range_age','adultos')->get();
-    //     return view('tests.adults.index',compact('test'));
-    // }
-
 
     public function store(Request $request)
     {
