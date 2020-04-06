@@ -2236,7 +2236,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                URL = "api/obtener-test-espesifico/".concat(id);
+                URL = "obtener-test-espesifico/".concat(id);
                 _context.prev = 1;
                 _context.next = 4;
                 return axios(URL);
@@ -2324,6 +2324,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    route: {
+      type: String,
+      required: true
+    }
+  },
   data: function data() {
     return {
       data_test: []
@@ -39049,6 +39055,7 @@ var render = function() {
                           "a",
                           {
                             staticClass: "btn btn-primary",
+                            attrs: { href: _vm.route },
                             on: {
                               click: function($event) {
                                 return _vm.irRuta(test.id)
