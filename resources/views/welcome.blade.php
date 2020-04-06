@@ -1,9 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.nav')
 
 @section('content')
 <section>
     <div class="container">
         <div class="row">
+            @if( auth()->user())
                 @foreach ($testR as $key => $value)
                 @if ($value['rango'] === 1)
                 <div class="col-md-4 m-1">
@@ -39,6 +40,9 @@
                 </div>
                 @endif
                 @endforeach
+            @else
+                <h1>Bienvendio Ingresa para ver las Pruebas</h1>
+            @endif
         </div>
     </div>
 </section>

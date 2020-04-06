@@ -31,8 +31,9 @@ Route::get('pruebajovenes','TestController@testyoungs')->name('testyoungs');
 //Route::get('pruebajo/{title}','TestController@gettest')->name('gettest');
 
 Route::get('pruebaadultos','TestController@testadults')->name('testadults');
-Route::get('prueba/{id}','TestController@getTest')->name('gettest');
 Route::post('test-save','TestController@store')->name('testsave');
+Route::get('/resultados', 'TestController@getTest')->name('getTest');
+//Route::get('prueba/{id}','TestController@getTest')->name('gettest');
 Route::post('{id_pregunta}/guardar-opcion', 'QuestionsController@guardarOpcionDePregunta');
  
 

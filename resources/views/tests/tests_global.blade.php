@@ -48,8 +48,11 @@
             </div>
         </div>
     </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script>
+        alert('ss')
         $(document).ready(function() {	
             let timesseg= $('#seg').val()*1000  
             $("#btn-comenzar").click(function() {
@@ -61,15 +64,11 @@
                 $('#test').css('display','none')
                 $('#questions').show()
             });
-
             function timeLimit(){
                 $('#test').css('display','none')  
                 alert('Se termino el Tiempo')
                 $('#questions').show()
             }
-                
-            
-            
         });
     </script>
 @endsection

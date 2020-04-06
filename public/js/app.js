@@ -2322,7 +2322,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     route: {
@@ -39035,47 +39034,15 @@ var render = function() {
         _vm._l(_vm.data_test, function(test, t) {
           return _c("div", [
             test.rango === 1
-              ? _c("div", { staticClass: "col-md-4 m-1" }, [
-                  _c(
-                    "div",
-                    { staticClass: "card", staticStyle: { width: "18rem" } },
-                    [
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h5", { staticClass: "card-title" }, [
-                          _vm._v("Prueba para niños de 8 a 15 años")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "Some quick example text to build on the card title and make up the bulk of the cards content."
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: { href: _vm.route },
-                            on: {
-                              click: function($event) {
-                                return _vm.irRuta(test.id)
-                              }
-                            }
-                          },
-                          [_vm._v("Mirar Prueba")]
-                        )
-                      ])
-                    ]
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            test.rango === 2
               ? _c("div", { staticClass: "col-md-4 m-1" }, [_vm._m(0, true)])
               : _vm._e(),
             _vm._v(" "),
-            test.rango === 3
+            test.rango === 2
               ? _c("div", { staticClass: "col-md-4 m-1" }, [_vm._m(1, true)])
+              : _vm._e(),
+            _vm._v(" "),
+            test.rango === 3
+              ? _c("div", { staticClass: "col-md-4 m-1" }, [_vm._m(2, true)])
               : _vm._e()
           ])
         }),
@@ -39085,6 +39052,24 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
+      _c("div", { staticClass: "card-body" }, [
+        _c("h5", { staticClass: "card-title" }, [
+          _vm._v("Prueba para niños de 8 a 15 años")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "card-text" }, [
+          _vm._v(
+            "Some quick example text to build on the card title and make up the bulk of the cards content."
+          )
+        ])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

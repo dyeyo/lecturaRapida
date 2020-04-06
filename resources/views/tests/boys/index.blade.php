@@ -25,23 +25,31 @@
         <div class="row" id="questions" >
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-body">
-                 @foreach ($test->preguntasAsociadas as $key => $value)
-                        <p class="font-weight-bold"> #{{$key+1}} - {{$value->title_question}}</p>
-                        @foreach ($value->opcionesAsociadas as $value2)
-                        <div class="custom-control custom-radio mb-2">
-                            <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio1"> {{$value2->option}}</label>
+                    <form method="POST" action="{{route('testsave')}}">
+                        @csrf()
+                        <div class="card-body">
+                            @foreach ($test->preguntasAsociadas as $key => $value)
+                                <p class="font-weight-bold"> #{{$key+1}} - {{$value->title_question}}</p>
+                                @foreach ($value->opcionesAsociadas as $value2)
+                                <div class="custom-control custom-radio mb-2">
+                                    <input type="radio" id="question" name="question" class="custom-control-input">
+                                    <label class="custom-control-label" for="question"> {{$value2->option}}</label>
+                                </div>
+                                @endforeach
+                            @endforeach
                         </div>
-                        @endforeach
-                 @endforeach
-                    </div>
+                        <button type="submit">Guardar</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div> 
 </section>
 @endsection
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
 <script>
         $(document).ready(function() {  
             let timesseg= $('#seg').val()*1000  
